@@ -2,12 +2,18 @@ addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
 });
 
-const REWRITER = new HTMLRewriter().on("p#description", {
-  element: e =>
-    e.setInnerContent(
-      "A cookie is being stored on your browser to always bring you back to this variant."
-    )
-});
+const REWRITER = new HTMLRewriter()
+  .on("p#description", {
+    element: e =>
+      e.setInnerContent(
+        "A cookie is being stored on your browser to always bring you back to this variant."
+      )
+  })
+  .on("a#url", {
+    element: e => {
+      e.setAttribute("href", "https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+    }
+  });
 
 /**
  * Respond with equal chance variant 1 or variant 2
