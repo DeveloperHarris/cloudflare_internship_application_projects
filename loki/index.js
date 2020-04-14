@@ -1,8 +1,11 @@
 addEventListener("fetch", event => {
   event.respondWith(handleRequest(event.request));
 });
+
+const REWRITER = new HTMLRewriter();
+
 /**
- * Respond with hello worker text
+ * Respond with equal chance variant 1 or variant 2
  * @param {Request} request
  */
 async function handleRequest(request) {
@@ -12,5 +15,7 @@ async function handleRequest(request) {
     .then(response => response.json())
     .then(data => data.variants);
 
-  return fetch(URLS[Math.round(Math.random())]);
+  let selectedVariant = await fetch(URLS[Math.round(Math.random())]);
+
+  return REWRITER.transform(selectedVariant);
 }
