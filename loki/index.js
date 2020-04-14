@@ -27,7 +27,7 @@ async function handleRequest(request) {
 
   let response;
 
-  if (variantCookieIndex) {
+  if (variantCookieIndex > 0) {
     response = await fetch(URLS[cookies[variantCookieIndex + 16]]);
   } else {
     let randomNum = Math.round(Math.random()); // Returns 0 or 1
