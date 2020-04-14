@@ -1,0 +1,6 @@
+name = "loki"
+type = "javascript"
+account_id = "c38bc3761ea690e1a45693a40ce4fb2f"
+workers_dev = true
+route = ""
+zone_id = "0e398e5f8da530e2b7d04d5298290749"
